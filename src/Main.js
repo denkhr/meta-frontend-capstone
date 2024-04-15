@@ -1,9 +1,10 @@
 import React from 'react';
+import {CallToAction} from './CallToAction.js';
 
 export const Main = () => {
     return(
     <main>
-        <a href="/book" role="button">Book a table</a>
+        <CallToAction/>
     </main>
     )
 }

@@ -1,13 +1,10 @@
 import React from 'react';
+import {Nav} from './Nav.js';
 
 export const Header = () => {
-    return(
-        <nav>
-            <ul>
-                <li><a href="/home">Homepage</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/blog">Blog</a></li>
-            </ul>
-        </nav>
-    )
+    return (
+    <div className="h-flex">
+        <img src='/logo.jpg' alt="Little Lemon logo"></img>
+        <Nav/>
+    </div>)
 }

@@ -1,11 +1,15 @@
-import logo from './logo.svg';
+import logo from './logo.jpg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      My homepage
-    </div>
+    <>
+      <img src={logo}></img>
+      <Header/>
+      <Nav/>
+      <Main/>
+      <Footer/>
+    </>
   );
 }
 

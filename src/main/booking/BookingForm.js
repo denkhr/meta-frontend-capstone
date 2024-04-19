@@ -1,11 +1,11 @@
 import React from 'react';
+import {DateInput} from './inputs/DateInput';
 
 export const BookingForm = () => {
     return(
         <form className="booking_form">
-            <label htmlFor="res-date">Choose date
-                <input type="date" id="res-date"/>
-            </label>
+
+            <DateInput/>
 
             <label htmlFor="res-time">Choose time
                 <select id="res-time ">
@@ -30,6 +30,7 @@ export const BookingForm = () => {
             </label>
 
             <input type="submit" value="Make Your reservation"/>
+
         </form>
     )
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import {HomePage} from './HomePage.js';
-import {BookingPage} from './BookingPage.js';
+import {HomePage} from './homepage/HomePage.js';
+import {BookingPage} from './booking/BookingPage.js';
 
 export const Main = () => {
     return(

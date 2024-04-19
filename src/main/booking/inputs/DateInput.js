@@ -5,11 +5,6 @@ export function DateInput() {
 
   const handleChange = (event) => {
     setDate(event.target.value);
-    showDate(event.target.value);
-  };
-
-  const showDate = (date) => {
-    console.log("Inputted date value:", date);
   };
 
   return (

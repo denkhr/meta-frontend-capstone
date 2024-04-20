@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
-const availableTimes = ["17:00","18:00","19:00","20:00","21:00","22:00"]
-
 export function TimeInput() {
-  const [time, setTime] = useState(availableTimes);
+/*   const [time, setTime] = useState(availableTimes); */
 
   const handleChange = (event) => {
     setTime(event.target.value);

@@ -1,11 +1,12 @@
 import React, { useState, useReducer, useEffect } from 'react';
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { fetchAPI, submitAPI } from './api';
+import {ConfirmedBooking} from './ConfirmedBooking';
 
-const availableTimesReducer = (state, action) => {
+export const availableTimesReducer = (state, action) => {
   switch (action.type) {
     case 'UPDATE_TIMES':
-      // Logic to update available times based on selected date (action.payload.date)
-      return action.payload.availableTimes; // For now, returning the same available times
+      return action.payload.availableTimes;
     default:
       return state;
   }
@@ -25,13 +26,13 @@ function DateInput({ handleDateChange, selectedDate }) {
   );
 }
 
-function TimeInput({ availableTimes, updateTimes }) {
+function TimeInput({ availableTimes, selectedTime, handleTimeChange}) {
   return (
     <label htmlFor="res-time">Choose time
       <select
         id="res-time"
-        onChange={updateTimes}
-        /* value={time} */
+        value={selectedTime}
+        onChange={handleTimeChange}
       >
         {availableTimes && availableTimes.map((option, index) =>
           (<option
@@ -45,7 +46,7 @@ function TimeInput({ availableTimes, updateTimes }) {
   );
 }
 
-function GuestsInput() {
+function GuestsInput({numberOfGuests, handleNumberOfGuestsChange}) {
   return (
     <label htmlFor="guests">
       Number of guests
@@ -53,24 +54,47 @@ function GuestsInput() {
         type="number"
         placeholder="1"
         min="1" max="10"
-        id="guests" />
+        id="guests"
+        value={numberOfGuests}
+        onChange={handleNumberOfGuestsChange}
+        />
     </label>
   );
 }
 
-function OcassionInput() {
+function OccasionInput({occasion, handleOccasionChange}) {
   return (
     <label htmlFor="occasion">
       Occasion
-      <select id="occasion">
+      <select
+        id="occasion"
+        value={occasion}
+        onChange={handleOccasionChange}>
+
         <option>Birthday</option>
         <option>Anniversary</option>
+        
       </select>
     </label>
   );
 }
 
-export const BookingPage = ({ selectedDate, setSelectedDate, updateTimes, availableTimes }) => {
+export const BookingPage = ({ selectedDate, setSelectedDate, updateTimes, availableTimes, submitForm }) => {
+  const [selectedTime, setSelectedTime] = useState('');
+  const [numberOfGuests, setNumberOfGuests] = useState(1);
+  const [occasion, setOccasion] = useState('Birthday');
+
+  const handleTimeChange = (event) => {
+    setSelectedTime(event.target.value);
+  };
+
+  const handleNumberOfGuestsChange = (event) => {
+    setNumberOfGuests(event.target.value);
+  };
+
+  const handleOccasionChange = (event) => {
+    setOccasion(event.target.value);
+  };
 
   const handleDateChange = (event) => {
     const date = event.target.value;
@@ -78,15 +102,26 @@ export const BookingPage = ({ selectedDate, setSelectedDate, updateTimes, availa
     updateTimes(date);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = {
+      date: selectedDate,
+      time: selectedTime, // Add selected time here
+      guests: numberOfGuests,
+      occasion: occasion
+    };
+    submitForm(formData);
+  };
+
   return (
     <section className="booking-page grid-main">
       <h1>Reserve a table</h1>
-      <form className="booking_form">
+      <form className="booking_form" onSubmit={handleSubmit}>
 
         <DateInput handleDateChange={handleDateChange} selectedDate={selectedDate} />
-        <TimeInput availableTimes={availableTimes} updateTimes={updateTimes} />
-        <GuestsInput />
-        <OcassionInput />
+        <TimeInput availableTimes={availableTimes} selectedTime={selectedTime} handleTimeChange={handleTimeChange}/>
+        <GuestsInput numberOfGuests={numberOfGuests} handleNumberOfGuestsChange={handleNumberOfGuestsChange}/>
+        <OccasionInput occasion={occasion} handleOccasionChangee={handleOccasionChange}/>
 
         <input type="submit" value="Make Your reservation" />
 
@@ -94,6 +129,7 @@ export const BookingPage = ({ selectedDate, setSelectedDate, updateTimes, availa
     </section>
   );
 };
+
 
 const CallToAction = () => {
   return(
@@ -149,20 +185,32 @@ const HomePage = () => {
 }
 
 export const Main = () => {
-  const [selectedDate, setSelectedDate] = useState('');
+  const today = new Date().toISOString().split('T')[0];
+  const [selectedDate, setSelectedDate] = useState(today);
   const [availableTimes, dispatch] = useReducer(availableTimesReducer, []);
 
   // Function to initialize availableTimes
   const initializeTimes = () => {
-    // Initialize available times here, for now, let's use the default array
-    dispatch({ type: 'UPDATE_TIMES', payload: { availableTimes: ["17:00","18:00","19:00","20:00","21:00","22:00"] } });
+    fetchAPI(today) // Fetch available times for today's date
+      .then(times => {
+        dispatch({ type: 'UPDATE_TIMES', payload: { availableTimes: times } });
+      })
+      .catch(error => {
+        console.error('Error fetching available times:', error.message);
+        // Handle error accordingly, e.g., display a message to the user
+      });
   };
 
   // Function to update availableTimes based on selected date
   const updateTimes = (date) => {
-    // Logic to update available times based on selected date
-    // For now, let's use the default array
-    dispatch({ type: 'UPDATE_TIMES', payload: { availableTimes: ["17:00","18:00","19:00","20:00","21:00","22:00"], date } });
+    fetchAPI(date) // Fetch available times for the selected date
+      .then(times => {
+        dispatch({ type: 'UPDATE_TIMES', payload: { availableTimes: times } });
+      })
+      .catch(error => {
+        console.error('Error fetching available times:', error.message);
+        // Handle error accordingly, e.g., display a message to the user
+      });
   };
 
   // Initialize availableTimes when component mounts
@@ -170,11 +218,31 @@ export const Main = () => {
     initializeTimes();
   }, []);
 
+  const navigate = useNavigate(); // Get the navigation function
+
+  const submitForm = async (formData, navigate) => {
+    try {
+      const response = await submitAPI(formData);
+      if (response) {
+        console.log(formData);
+        // If booking is confirmed, navigate to ConfirmedBooking page
+        navigate("/booking/confirmed"); // Navigate to the confirmed booking page
+      } else {
+        // Handle case where booking submission fails
+        console.error('Booking submission failed.');
+      }
+    } catch (error) {
+      console.error('Error submitting booking:', error.message);
+      // Handle error accordingly
+    }
+  };
+
   return (
     <main>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/booking" element={<BookingPage selectedDate={selectedDate} setSelectedDate={setSelectedDate} updateTimes={updateTimes} availableTimes={availableTimes} />} />
+        <Route path="/booking" element={<BookingPage selectedDate={selectedDate} setSelectedDate={setSelectedDate} updateTimes={updateTimes} availableTimes={availableTimes} submitForm={(formData) => submitForm(formData, navigate)}/>} />
+        <Route path="/booking/confirmed" element={<ConfirmedBooking />} />
       </Routes>
     </main>
   );

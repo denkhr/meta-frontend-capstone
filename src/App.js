@@ -24,7 +24,7 @@ const Header = () => {
 const Footer = () => {
   return(
   <footer>
-    2024 Denis Khramov
+    2024 Denis Khramov!!!
   </footer>
   )
 }

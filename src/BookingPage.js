@@ -93,7 +93,7 @@ export const BookingPage = ({
         };
         submitForm(formData);
       } else {
-        // Handle case where form is invalid
+        alert("Form submission failed. Please review your entries and try again.");
       }
     };
 
@@ -110,8 +110,9 @@ export const BookingPage = ({
               id="name"
               value={name}
               onChange={handleName}
+              aria-label="Name"
             />
-            {formErrors.name && <span className="error">{formErrors.name}</span>}
+            {formErrors.name && <span className="error" aria-live="assertive">{formErrors.name}</span>}
           </label>
 
           <label htmlFor="phone">
@@ -123,8 +124,9 @@ export const BookingPage = ({
               id="phone"
               value={phone}
               onChange={handlePhone}
+              aria-label="Phone Number"
             />
-            {formErrors.phone && <span className="error">{formErrors.phone}</span>}
+            {formErrors.phone && <span className="error" aria-live="assertive">{formErrors.phone}</span>}
           </label>
 
           <label htmlFor="res-date">
@@ -136,8 +138,9 @@ export const BookingPage = ({
               id="res-date"
               onChange={handleDateChange}
               min={new Date().toISOString().split("T")[0]}
+              aria-label="Date"
             />
-            {formErrors.selectedDate && <span className="error">{formErrors.selectedDate}</span>}
+            {formErrors.selectedDate && <span className="error" aria-live="assertive">{formErrors.selectedDate}</span>}
           </label>
 
           <label htmlFor="res-time">
@@ -147,6 +150,7 @@ export const BookingPage = ({
               id="res-time"
               value={selectedTime}
               onChange={handleTimeChange}
+              aria-label="Time"
             >
               <option value="">Select a time</option>
               {availableTimes &&
@@ -156,7 +160,7 @@ export const BookingPage = ({
                   </option>
                 ))}
             </select>
-            {formErrors.selectedTime && <span className="error">{formErrors.selectedTime}</span>}
+            {formErrors.selectedTime && <span className="error" aria-live="assertive">{formErrors.selectedTime}</span>}
           </label>
 
           <label htmlFor="guests">
@@ -170,8 +174,9 @@ export const BookingPage = ({
               id="guests"
               value={numberOfGuests}
               onChange={handleNumberOfGuestsChange}
+              aria-label="Number of Guests"
             />
-            {formErrors.numberOfGuests && <span className="error">{formErrors.numberOfGuests}</span>}
+            {formErrors.numberOfGuests && <span className="error" aria-live="assertive">{formErrors.numberOfGuests}</span>}
           </label>
 
           <label htmlFor="occasion">
@@ -181,15 +186,16 @@ export const BookingPage = ({
               id="occasion"
               value={occasion}
               onChange={handleOccasionChange}
+              aria-label="Occasion"
             >
               <option value="Birthday">Birthday</option>
               <option value="Anniversary">Anniversary</option>
               <option value="Funeral Party">Funeral Party</option>
             </select>
-            {formErrors.occasion && <span className="error">{formErrors.occasion}</span>}
+            {formErrors.occasion && <span className="error" aria-live="assertive">{formErrors.occasion}</span>}
           </label>
 
-          <input type="submit" value="Make Your reservation" disabled={!formValid} />
+          <input type="submit" value="Make Your reservation" disabled={!formValid} aria-label="Submit Reservation" />
         </form>
       </section>
     );

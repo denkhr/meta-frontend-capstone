@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { fetchAPI, submitAPI } from "./api";
 import { ConfirmedBooking } from "./ConfirmedBooking";
 import { HomePage } from "./HomePage";
+import * as Yup from 'yup';
 
 export const availableTimesReducer = (state, action) => {
   switch (action.type) {
@@ -26,6 +27,38 @@ export const BookingPage = ({
   const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
   const [formValid, setFormValid] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+
+  const bookingSchema = Yup.object().shape({
+    name: Yup.string().required('Your name is required'),
+    phone: Yup.string().required('Phone number is required').matches(/^\+(?:[0-9] ?){6,14}[0-9]$/, 'Invalid phone number'),
+    selectedDate: Yup.date().required('Date is required'),
+    selectedTime: Yup.string().required('Time is required'),
+    numberOfGuests: Yup.number().required("Number of guests is required").min(1, "Must be at least 1").max(10, "Cannot exceed 10"),
+    occasion: Yup.string().required("Occasion is required")
+  });
+
+  const validateForm = async () => {
+    try {
+      await bookingSchema.validate({
+        name,
+        phone,
+        selectedDate,
+        selectedTime,
+        numberOfGuests,
+        occasion
+      }, { abortEarly: false });
+      setFormErrors({});
+      setFormValid(true);
+    } catch (error) {
+      const errors = {};
+      error.inner.forEach(err => {
+        errors[err.path] = err.message;
+      });
+      setFormErrors(errors);
+      setFormValid(false);
+    }
+  };
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -59,15 +92,9 @@ export const BookingPage = ({
     validateForm();
   };
 
-  const validateForm = () => {
-    // Implement validation logic for each field
-    // For simplicity, consider the form valid if all fields are filled
-    const isValid = name && phone && selectedTime && numberOfGuests && occasion;
-    setFormValid(isValid);
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    await validateForm();
     if (formValid) {
       const formData = {
         name: name,
@@ -95,8 +122,8 @@ export const BookingPage = ({
             id="name"
             value={name}
             onChange={handleName}
-            required
           />
+          {formErrors.name && <span className="error">{formErrors.name}</span>}
         </label>
 
         <label htmlFor="phone">
@@ -107,8 +134,8 @@ export const BookingPage = ({
             id="phone"
             value={phone}
             onChange={handlePhone}
-            required
           />
+          {formErrors.phone && <span className="error">{formErrors.phone}</span>}
         </label>
 
         <label htmlFor="res-date">
@@ -119,8 +146,8 @@ export const BookingPage = ({
             id="res-date"
             onChange={handleDateChange}
             min={new Date().toISOString().split("T")[0]}
-            required
           />
+          {formErrors.selectedDate && <span className="error">{formErrors.selectedDate}</span>}
         </label>
 
         <label htmlFor="res-time">
@@ -129,7 +156,6 @@ export const BookingPage = ({
             id="res-time"
             value={selectedTime}
             onChange={handleTimeChange}
-            required
           >
             <option value="">Select a time</option>
             {availableTimes &&
@@ -139,6 +165,7 @@ export const BookingPage = ({
                 </option>
               ))}
           </select>
+          {formErrors.selectedTime && <span className="error">{formErrors.selectedTime}</span>}
         </label>
 
         <label htmlFor="guests">
@@ -151,8 +178,8 @@ export const BookingPage = ({
             id="guests"
             value={numberOfGuests}
             onChange={handleNumberOfGuestsChange}
-            required
           />
+          {formErrors.numberOfGuests && <span className="error">{formErrors.numberOfGuests}</span>}
         </label>
 
         <label htmlFor="occasion">
@@ -161,12 +188,12 @@ export const BookingPage = ({
             id="occasion"
             value={occasion}
             onChange={handleOccasionChange}
-            required
           >
             <option value="Birthday">Birthday</option>
             <option value="Anniversary">Anniversary</option>
             <option value="Funeral Party">Funeral Party</option>
           </select>
+          {formErrors.occasion && <span className="error">{formErrors.occasion}</span>}
         </label>
 
         <input type="submit" value="Make Your reservation" disabled={!formValid} />

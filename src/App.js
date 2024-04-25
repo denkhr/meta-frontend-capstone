@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter, Link } from "react-router-dom";
 import { Main } from './Main.js';
 

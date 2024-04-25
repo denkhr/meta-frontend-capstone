@@ -8,23 +8,55 @@
   --light-grey: #EDEFEE;
   --disabled-bg: #D9D9D9;
   --disabled-text: #B6B6B6;
+
+  --space-4: 0.25rem;
+  --space-8: 0.5rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-20: 1.25rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --space-40: 2.5rem;
+  --space-48: 3rem;
+  --space-56: 3.5rem;
+  --space-64: 4rem;
+  --space-80: 5rem;
+
+  --text-12: 0.75rem;
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-18: 1.125rem;
+  --text-20: 1.25rem;
+  --text-24: 1.5rem;
+  --text-32: 2rem;
+  --text-40: 2.5rem;
+  --text-48: 3rem;
+  --text-56: 3.5rem;
+  --text-64: 4rem;
+  --text-80: 5rem;
+
+  --rounded-8: 0.5rem;
+  --rounded-16: 1rem;
 }
 
 body {
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: Karla, sans-serif;
+  color: var(--black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  margin: 0; /* remove default margin */
-  scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
-  -ms-overflow-style: none; /* Disable scrollbar IE 10+ */
+  margin: 0;
+  /* remove default margin */
+  scrollbar-width: none;
+  /* Also needed to disable scrollbar Firefox */
+  -ms-overflow-style: none;
+  /* Disable scrollbar IE 10+ */
   overflow-y: scroll;
 }
 
 @-moz-document url-prefix() {
+
   /* Disable scrollbar Firefox */
   html {
     scrollbar-width: none;
@@ -45,84 +77,188 @@ main {
 
 
 /* UTILITIES */
+p {
+  font-size: var(--text-18);
+  font-weight: 500;
+}
+
+h1 {
+  font-family: Markazi Text, serif;
+  font-size: var(--text-64);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h2 {
+  font-family: Markazi Text, serif;
+  font-size: var(--text-40);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h3 {
+  font-family: Markazi Text, serif;
+  font-size: var(--text-20);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black);
+  font-size: var(--text-18);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 
 .h-flex {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: var(--space-40);
+}
+
+.v-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-20);
 }
 
 .grid-main {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(6, minmax(20px, auto));
-  padding: 40px;
+  grid-template-rows: auto;
+  padding: var(--space-80);
+  gap: var(--space-20);
   box-sizing: border-box;
+}
+
+.col-12 {
+  grid-column: span 12;
+}
+
+.col-6 {
+  grid-column: span 12;
+}
+
+.btn {
+  font-family: Karla, sans-serif;
+  color: var(--black);
+  font-size: var(--text-18);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  text-decoration: none;
+  border-radius: var(--rounded-16);
+  background: var(--yellow);
+  color: var(--black);
+  display: flex;
+  width: auto;
+  padding: var(--text-14) var(--text-80);
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 
 /* SECTIONS */
 
-/* Navbar */
+/* Header */
+
+.header {
+  width: 100%;
+  padding: 20px;
+}
+
+nav {
+  grid-column: 5 / span 6;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_logo {
+  width: 100%;
+  max-height: 76px;
+  grid-column: 3 / span 2;
+}
 
 .nav_list {
+  list-style: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  list-style: none;
+}
+
+.nav_list>li>a:visited {
+  color: var(--black);
 }
 
 
 /* Hero section */
 
 .hero_wrapper {
-  height: auto;
+  color: var(--white);
   background-color: var(--dark-green);
+  width: 100%;
+  height: auto;
+  grid-column: auto;
 }
 
-.hero_wrapper > p {
-  grid-column: span 2;
+.hero_text {
+  width: 60ch;
 }
 
 .hero_img {
   width: 40%;
 }
 
+.hero_img>img {
+  width: 400px;
+  object-fit: cover;
+}
+
 
 /* Specials section */
 
-.specials_wrapper {
-  height: 400px;
+#specials-section {
+  height: auto;
   background-color: var(--yellow);
 }
 
 
 /* Testimonials section */
 
-.testimonials_wrapper {
-  height: 400px;
+#testimonials-section {
+  height: auto;
   background-color: var(--dark-green);
 }
 
 
 /* About section */
 
-.about_wrapper {
-  height: 400px;
-  background-color: #f4ce14;
+#about-section {
+  height: auto;
+  background-color: var(--yellow);
 }
 
 
 /* Booking page */
 
 .booking-page {
-  height: 800px;
-  background-color: #ee9972;
+  height: auto;
+  background-color: var(--peach);
 }
 
 form {
@@ -147,7 +283,7 @@ label {
   margin: 0;
 }
 
-.booking-page > h1 {
+.booking-page>h1 {
   margin: 0;
   grid-row: 1 / 2;
   grid-column: 1 / 3;

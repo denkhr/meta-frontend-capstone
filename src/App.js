@@ -1,23 +1,23 @@
+import React from "react";
 import { BrowserRouter, Link } from "react-router-dom";
 import { Main } from './Main.js';
 
-const Nav = () => {
-  return (
-    <nav>
-      <ul className="nav_list">
-        <li><Link to="/">Homepage</Link></li>
-        <li><Link to="/booking">Reservations</Link></li>
-      </ul>
-    </nav>
-  )
-}
-
 const Header = () => {
+
   return (
-    <div className="h-flex">
-      <img src='/logo.jpg' alt="Little Lemon logo"></img>
-      <Nav />
-    </div>)
+    <header position="fixed" className="grid-main header">
+      <img className="nav_logo" src='/logo.jpg' alt="Little Lemon logo"></img>
+      <nav>
+        <ul className="nav_list">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/booking">Reservations</Link></li>
+          <li><Link to={{ pathname: "/", hash: "about-section" }}>About</Link></li>
+          <li><Link to={{ pathname: "/", hash: "specials-section" }}>Menu</Link></li>
+          <li><a href="#order">Order Online</a></li>
+          <li><a href="#login">Login</a></li>
+        </ul>
+      </nav>
+    </header>)
 }
 
 const Footer = () => {

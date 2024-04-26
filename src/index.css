@@ -1,3 +1,4 @@
+
 /* VARIABLES */
 
 :root {
@@ -113,24 +114,30 @@ p {
 }
 
 h1 {
-  font-family: Markazi Text, serif;
+  font-family: "Markazi Text", serif;
   font-size: var(--text-64);
+  font-optical-sizing: auto;
+  font-style: normal;
   font-weight: 500;
   line-height: 1.2;
   margin: 0;
 }
 
 h2 {
-  font-family: Markazi Text, serif;
+  font-family: "Markazi Text", serif;
   font-size: var(--text-40);
+  font-optical-sizing: auto;
+  font-style: normal;
   font-weight: 400;
   line-height: 1.2;
   margin: 0;
 }
 
 h3 {
-  font-family: Markazi Text, serif;
+  font-family: "Markazi Text", serif;
   font-size: var(--text-20);
+  font-optical-sizing: auto;
+  font-style: normal;
   font-weight: 400;
   line-height: 1.2;
   margin: 0;
@@ -156,8 +163,8 @@ a {
 /* Spacing */
 
 .paddings-section {
-  padding-left: var(--space-80);
-  padding-right: var(--space-80);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .pt-20 {
@@ -233,7 +240,35 @@ a {
 /* Colors */
 
 .color-yellow {
-  color: var(--yellow);
+  color: var(--yellow) !important;
+}
+
+.color-dark-green {
+  color: var(--dark-green) !important;
+}
+
+.color-black {
+  color: var(--black) !important;
+}
+
+.color-white {  
+  color: var(--white) !important;
+}
+
+.bg-yellow {
+  background-color: var(--yellow) !important;
+}
+
+.bg-dark-green {
+  background-color: var(--dark-green) !important;
+}
+
+.bg-black {
+  background-color: var(--black) !important;
+}
+
+.bg-white {  
+  background-color: var(--white) !important;
 }
 
 /* Flex */
@@ -252,6 +287,14 @@ a {
   align-items: flex-start;
 }
 
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-grow-2 {
+  flex-grow: 2;
+}
+
 /* Grids */
 
 .grid-main {
@@ -266,7 +309,7 @@ a {
 }
 
 .col-full {
-  grid-column: 3/span 8;
+  grid-column: 4/span 6;
 }
 
 .col-6 {
@@ -286,11 +329,13 @@ a {
   background: var(--yellow);
   color: var(--black);
   display: flex;
+  height: 100%;
   width: auto;
-  padding: var(--text-14) var(--text-80);
+  padding: var(--text-14) var(--text-80) var(--text-16);
   justify-content: center;
   align-items: center;
   gap: 20px;
+  box-sizing: border-box;
 }
 
 
@@ -377,30 +422,7 @@ nav {
   background-color: var(--peach);
 }
 
-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  max-width: 600px;
-  gap: 20px;
-}
-
-input,
-select {
-  width: 100%;
-  display: block;
-  padding: 5px 10px;
-  margin: 5px 0 10px;
-  box-sizing: border-box;
-}
-
-label {
-  padding: 0;
-  margin: 0;
-}
-
 .booking-page>h1 {
-  margin: 0;
   grid-row: 1 / 2;
   grid-column: 1 / 3;
 }
@@ -410,9 +432,47 @@ label {
   grid-column: 5 / span 4;
 }
 
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+input,
+select, 
+textarea {
+  border: none;
+  border-radius: var(--rounded-8);
+
+  font-family: Karla, sans-serif;
+  font-size: var(--text-18);
+  line-height: normal;
+
+  height: 36px;
+  width: 100%;
+  display: block;
+  padding: var(--space-8) var(--space-16);
+  margin: var(--space-8) 0 var(--space-12);
+  box-sizing: border-box;
+}
+
+label {
+  font-family: Karla, sans-serif;
+  font-size: var(--text-16);
+  font-weight: 500;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+
 @media screen and (max-width: 1520px) {
   :root {
     font-size: 15px;
+  }
+
+  .col-full {
+    grid-column: 3/span 8;
   }
 
   .nav_logo {
@@ -421,6 +481,10 @@ label {
 
   .nav_list {
     gap: var(--space-20);
+  }
+
+  .booking_form {
+    grid-column: 5 / span 4;
   }
 }
 
@@ -445,6 +509,10 @@ label {
   .nav_list {
     gap: var(--space-20);
   }
+
+  .booking_form {
+    grid-column: 4 / span 6;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -468,6 +536,10 @@ label {
   .nav_logo {
     max-height: var(--space-56);
   }
+
+  .booking_form {
+    grid-column: 3 / span 8;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -482,5 +554,9 @@ label {
 
   .nav_logo {
     max-height: var(--space-48);
+  }
+
+  .booking_form {
+    grid-column: 2 / span 10;
   }
 }

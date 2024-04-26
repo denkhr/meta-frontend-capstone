@@ -5,8 +5,8 @@ import { Main } from './Main.js';
 const Header = () => {
 
   return (
-    <header position="fixed" className="grid-main paddings-section">
-      <div className="h-flex col-full">
+    <header position="fixed" className="grid-main paddings-section pt-20 pb-20">
+      <div className="h-flex gap-20 col-full">
         <img className="nav_logo" src='/logo.jpg' alt="Little Lemon logo"></img>
         <nav>
           <ul className="nav_list">

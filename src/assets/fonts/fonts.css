@@ -1,9 +1,11 @@
 @font-face {
     font-family: 'Markazi Text';
-    src: url('./MarkaziText-VariableFont_wght.ttf') format('ttf');
+    src: url('/src/assets/fonts/MarkaziText-VariableFont_wght.woff') format('woff'),
+         url('/src/assets/fonts/MarkaziText-VariableFont_wght.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Karla';
-    src: url('./Karla-VariableFont_wght.ttf') format('ttf');
+    src: url('/src/assets/fonts/Karla-VariableFont_wght.woff') format('woff'),
+         url('/src/assets/fonts/Karla-VariableFont_wght.woff2') format('woff2');
 }

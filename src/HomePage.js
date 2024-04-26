@@ -11,8 +11,8 @@ const CallToAction = () => {
 
           <div className="v-flex">
             <h1 className="color-yellow">Little Lemon</h1>
-            <h2>Chicago</h2>
-            <p className="text-60ch">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
+            <h2 className="pb-20">Chicago</h2>
+            <p className="text-60ch pb-20">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
           </div>
 
           <a href="/book" className="btn" role="button">Reserve a table</a>
@@ -31,12 +31,12 @@ const CallToAction = () => {
 const Specials = () => {
   return (
     <section id="specials-section" className="grid-main paddings-section pb-40 pt-100">
-      <div className="h-flex col-12">
+      <div className="h-flex gap-40 col-full">
         <h1>Specials</h1>
         <button>Online Menu</button>
       </div>
 
-      <div className="h-flex col-12">
+      <div className="h-flex gap-40 col-full">
         <div>
           <button>Order a delivery</button>
         </div>
@@ -49,7 +49,9 @@ const Specials = () => {
 const CustomersSay = () => {
   return (
     <section id="testimonials-section" className="grid-main paddings-section pt-40 pb-40">
-      Testimonials
+      <div className="h-flex gap-40 col-full">
+        <h1>Testimonials</h1>
+      </div>
     </section>
   );
 };
@@ -57,7 +59,9 @@ const CustomersSay = () => {
 const Chicago = () => {
   return (
     <section id="about-section" className="grid-main paddings-section pt-40 pb-40">
-      About Us
+      <div className="h-flex gap-40 col-full">
+        <h1>About Us</h1>
+      </div>
     </section>
   );
 };

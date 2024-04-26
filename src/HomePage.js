@@ -4,22 +4,24 @@ import { useLocation } from "react-router-dom";
 
 const CallToAction = () => {
   return (
-    <section className="hero_wrapper grid-main">
-      <div className="h-flex col-12">
+    <section id="hero-section" className="grid-main paddings-section pt-40 pb-40">
+      <div className="h-flex gap-40 col-full">
 
-        <div className="v-flex">
+        <div className="v-flex gap-20 hero_text">
 
-          <div className="hero_text">
-            <h1 className="col-yellow">Little Lemon</h1>
+          <div className="v-flex">
+            <h1 className="color-yellow">Little Lemon</h1>
             <h2>Chicago</h2>
-            <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
+            <p className="text-60ch">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
           </div>
 
           <a href="/book" className="btn" role="button">Reserve a table</a>
 
         </div>
 
-        <img className="hero_img" src={heroImage} alt="The waiter is serving a dish" />
+        <div className="hero_img">
+          <img src={heroImage} alt="The waiter is serving a dish" />
+        </div>
 
       </div>
     </section>
@@ -28,14 +30,16 @@ const CallToAction = () => {
 
 const Specials = () => {
   return (
-    <section id="specials-section" className="grid-main">
+    <section id="specials-section" className="grid-main paddings-section pb-40 pt-100">
       <div className="h-flex col-12">
         <h1>Specials</h1>
         <button>Online Menu</button>
       </div>
 
-      <div>
-        <button>Order a delivery</button>
+      <div className="h-flex col-12">
+        <div>
+          <button>Order a delivery</button>
+        </div>
       </div>
 
     </section>
@@ -44,12 +48,18 @@ const Specials = () => {
 
 const CustomersSay = () => {
   return (
-    <section className="testimonials_wrapper grid-main">Testimonials</section>
+    <section id="testimonials-section" className="grid-main paddings-section pt-40 pb-40">
+      Testimonials
+    </section>
   );
 };
 
 const Chicago = () => {
-  return <section id="about-section" className="about_wrapper grid-main">About Us</section>;
+  return (
+    <section id="about-section" className="grid-main paddings-section pt-40 pb-40">
+      About Us
+    </section>
+  );
 };
 
 export const HomePage = () => {

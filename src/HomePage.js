@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
 import heroImage from "./assets/img/restaurantfood.jpg";
+import greekSalad from "./assets/img/greek-salad.jpg";
+import bruchetta from "./assets/img/bruchetta.png";
+import lemonDessert from "./assets/img/lemon-dessert.jpg";
+import orderIcon from "./assets/icons/order-icon.svg";
 import { useLocation } from "react-router-dom";
 
 const CallToAction = () => {
@@ -12,10 +16,10 @@ const CallToAction = () => {
           <div className="v-flex">
             <h1 className="color-yellow">Little Lemon</h1>
             <h2 className="pb-20">Chicago</h2>
-            <p className="text-60ch pb-20">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
+            <p className="text-60ch pb-20 text-balance">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
           </div>
 
-          <a href="/book" className="btn" role="button">Reserve a table</a>
+          <a href="/book" className="btn" role="Button" aria-label="button">Reserve a table</a>
 
         </div>
 
@@ -31,15 +35,83 @@ const CallToAction = () => {
 const Specials = () => {
   return (
     <section id="specials-section" className="grid-main paddings-section pb-40 pt-100">
-      <div className="h-flex gap-40 col-full">
-        <h1>Specials</h1>
-        <button>Online Menu</button>
+      <div className="h-flex gap-40 col-full pb-20">
+        <h1>This week specials!</h1>
+        <button className="color-white bg-black" aria-label="Button">Online Menu</button>
       </div>
 
-      <div className="h-flex gap-40 col-full">
-        <div>
-          <button>Order a delivery</button>
+      <div className="card-group gap-40 col-full">
+
+        <div className="card v-flex">
+
+          <div class="card_image">
+            <img src={greekSalad} alt="Greek salad" />
+          </div>
+
+          <div className="card_text">
+            <div className="h-flex pb-20">
+              <h2 className="text-h3">Greek salad</h2>
+              <span className="card_price">$12.99</span>
+            </div>
+            <p className="color-dark-green pb-40">
+              The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.
+            </p>
+            <a href="/" className="order-btn h-flex gap-12" role="button" aria-label="Button">
+              Order a delivery
+              <span>
+                <img src={orderIcon} alt="Order icon" />
+              </span>
+            </a>
+          </div>
+
         </div>
+
+        <div className="card v-flex">
+
+          <div class="card_image">
+            <img src={bruchetta} alt="Bruchetta" />
+          </div>
+
+          <div className="card_text">
+            <div className="h-flex pb-20">
+              <h2 className="text-h3">Bruchetta</h2>
+              <span className="card_price">$5.99</span>
+            </div>
+            <p className="color-dark-green pb-40">
+              Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.            </p>
+            <a href="/" className="order-btn h-flex gap-12" role="button" aria-label="Button">
+              Order a delivery
+              <span>
+                <img src={orderIcon} alt="Order icon" />
+              </span>
+            </a>
+          </div>
+
+        </div>
+
+        <div className="card v-flex">
+
+          <div class="card_image">
+            <img src={lemonDessert} alt="Lemon dessert" />
+          </div>
+
+          <div className="card_text">
+            <div className="h-flex pb-20">
+              <h2 className="text-h3">Lemon Dessert</h2>
+              <span className="card_price">$5.00</span>
+            </div>
+            <p className="color-dark-green pb-40">
+            This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.            </p>
+            <a href="/" className="order-btn h-flex gap-12" role="button" aria-label="Button">
+              Order a delivery
+              <span>
+                <img src={orderIcon} alt="Order icon" />
+              </span>
+            </a>
+          </div>
+
+        </div>
+
       </div>
 
     </section>

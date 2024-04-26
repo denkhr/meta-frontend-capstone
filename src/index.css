@@ -1,4 +1,3 @@
-
 /* VARIABLES */
 
 :root {
@@ -113,7 +112,8 @@ p {
   font-weight: 500;
 }
 
-h1 {
+h1,
+.text-h1 {
   font-family: "Markazi Text", serif;
   font-size: var(--text-64);
   font-optical-sizing: auto;
@@ -123,7 +123,8 @@ h1 {
   margin: 0;
 }
 
-h2 {
+h2,
+.text-h2 {
   font-family: "Markazi Text", serif;
   font-size: var(--text-40);
   font-optical-sizing: auto;
@@ -133,12 +134,13 @@ h2 {
   margin: 0;
 }
 
-h3 {
+h3,
+.text-h3 {
   font-family: "Markazi Text", serif;
-  font-size: var(--text-20);
+  font-size: var(--text-32);
   font-optical-sizing: auto;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2;
   margin: 0;
 }
@@ -211,6 +213,10 @@ a {
   gap: var(--space-8);
 }
 
+.gap-12 {
+  gap: var(--space-12);
+}
+
 .gap-20 {
   gap: var(--space-20);
 }
@@ -227,6 +233,10 @@ a {
 
 .text-nowrap {
   text-wrap: nowrap;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
 
 .text-60ch {
@@ -251,7 +261,7 @@ a {
   color: var(--black) !important;
 }
 
-.color-white {  
+.color-white {
   color: var(--white) !important;
 }
 
@@ -267,7 +277,7 @@ a {
   background-color: var(--black) !important;
 }
 
-.bg-white {  
+.bg-white {
   background-color: var(--white) !important;
 }
 
@@ -295,6 +305,14 @@ a {
   flex-grow: 2;
 }
 
+.flex-shrink-1 {
+  flex-shrink: 1;
+}
+
+.flex-shrink-2 {
+  flex-shrink: 2;
+}
+
 /* Grids */
 
 .grid-main {
@@ -316,7 +334,8 @@ a {
   grid-column: span 12;
 }
 
-.btn {
+.btn,
+button {
   font-family: Karla, sans-serif;
   color: var(--black);
   font-size: var(--text-18);
@@ -325,6 +344,7 @@ a {
   line-height: normal;
 
   text-decoration: none;
+  border: none;
   border-radius: var(--rounded-16);
   background: var(--yellow);
   color: var(--black);
@@ -336,6 +356,19 @@ a {
   align-items: center;
   gap: 20px;
   box-sizing: border-box;
+}
+
+.order-btn {
+  font-size: var(--text-16);
+  font-weight: 700;
+
+  display: flex;
+/*   height: 40px; */
+  width: auto;
+
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: auto;
 }
 
 
@@ -401,6 +434,53 @@ nav {
   background-color: var(--yellow);
 }
 
+.card-group {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch
+}
+
+.card {
+  width: 30%;
+  background-color: var(--light-grey);
+  border-radius: var(--rounded-16);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.card_image {
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+}
+
+.card_image>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card_text {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-12) var(--space-24) var(--space-24);
+}
+
+.card_price {
+  font-family: Karla, sans-serif;
+  font-size: var(--text-18);
+  font-weight: 700;
+  color: var(--peach);
+}
+
+.card-group.col-full {
+  grid-column: 3 / span 8;
+}
+
 /* Testimonials section */
 
 #testimonials-section {
@@ -440,7 +520,7 @@ form {
 }
 
 input,
-select, 
+select,
 textarea {
   border: none;
   border-radius: var(--rounded-8);
@@ -513,6 +593,10 @@ label {
   .booking_form {
     grid-column: 4 / span 6;
   }
+
+  .card-group.col-full {
+    grid-column: 2 / span 10;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -539,6 +623,19 @@ label {
 
   .booking_form {
     grid-column: 3 / span 8;
+  }
+
+  .card-group {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card-group.col-full {
+    grid-column: 4 / span 6;
   }
 }
 

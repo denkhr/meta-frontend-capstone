@@ -189,6 +189,14 @@ a {
   padding-top: var(--space-100);
 }
 
+.pt-160 {
+  padding-top: var(--space-160);
+}
+
+.pt-200 {
+  padding-top: var(--space-200);
+}
+
 .pb-20 {
   padding-bottom: var(--space-20);
 }
@@ -207,6 +215,14 @@ a {
 
 .pb-100 {
   padding-bottom: var(--space-100);
+}
+
+.pb-160 {
+  padding-bottom: var(--space-160);
+}
+
+.pb-200 {
+  padding-bottom: var(--space-200);
 }
 
 .gap-4 {
@@ -532,6 +548,25 @@ nav {
 #about-section {
   height: auto;
   background-color: var(--yellow);
+}
+
+.about_img {
+  width: 20rem;
+  height: 30rem;
+  border-radius: var(--rounded-16);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  padding-left: var(--space-60);
+}
+
+.img-overflow {
+  margin-left: -10rem;
+  margin-top: -10rem;
+}
+.about_img>img {
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Booking page */

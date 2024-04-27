@@ -3,18 +3,20 @@ import heroImage from "./assets/img/restaurantfood.jpg";
 import greekSalad from "./assets/img/greek-salad.jpg";
 import bruchetta from "./assets/img/bruchetta.png";
 import lemonDessert from "./assets/img/lemon-dessert.jpg";
-import orderIcon from "./assets/icons/order-icon.svg";
+import interiorImage from "./assets/img/restaurant.jpg"
+import chefImage from "./assets/img/restaurant-chef-b.jpg"
 import avatar1 from "./assets/img/avatar1.jpg";
 import avatar2 from "./assets/img/avatar2.jpg";
 import avatar3 from "./assets/img/avatar3.jpg";
 import avatar4 from "./assets/img/avatar4.jpg";
+import orderIcon from "./assets/icons/order-icon.svg";
 import starFull from "./assets/icons/star-yellow.svg";
 import starEmpty from "./assets/icons/star-grey.svg";
 import { useLocation } from "react-router-dom";
 
 const CallToAction = () => {
   return (
-    <section id="hero-section" className="grid-main paddings-section pt-40 pb-40">
+    <section id="hero-section" className="grid-main paddings-section pt-60 pb-80">
       <div className="h-flex gap-40 col-full">
 
         <div className="v-flex gap-20 hero_text">
@@ -126,8 +128,8 @@ const Specials = () => {
 
 const CustomersSay = () => {
   return (
-    <section id="testimonials-section" className="grid-main paddings-section pt-80 pb-80">
-      <div className="col-full pb-20">
+    <section id="testimonials-section" className="grid-main paddings-section pt-100 pb-100">
+      <div className="col-full pb-40">
         <h2 className="text-h1 text-center">Testimonials</h2>
       </div>
 
@@ -217,9 +219,27 @@ const CustomersSay = () => {
 
 const Chicago = () => {
   return (
-    <section id="about-section" className="grid-main paddings-section pt-40 pb-40">
+    <section id="about-section" className="grid-main paddings-section pt-160 pb-100">
       <div className="h-flex gap-40 col-full">
-        <h2 className="text-h1">Little Lemon</h2>
+
+        <div className="v-flex gap-20 hero_text">
+
+          <div className="v-flex">
+            <h2 className="text-h1 color-black">Little Lemon</h2>
+            <h3 className="text-h2 pb-20 color-dark-green">Chicago</h3>
+            <p className="text-60ch pb-20 text-balance">Welcome to our Little Lemon restaurant! You are always welcome here. We have a variety of dishes to choose from and we have a welcoming and friendly atmosphere. Our new restaurant has been opened in 2024 in Chicago. Best service and food for you to enjoy. And even more good things. Let us delve you into an atmosphere of deliciousness. </p>
+          </div>
+
+        </div>
+
+        <div className="about_img">
+          <img src={interiorImage} alt="The waiter is serving a dish" />
+        </div>
+
+        <div className="about_img img-overflow">
+          <img src={chefImage} alt="The waiter is serving a dish" />
+        </div>
+
       </div>
     </section>
   );

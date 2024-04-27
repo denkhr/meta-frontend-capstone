@@ -209,6 +209,10 @@ a {
   padding-bottom: var(--space-100);
 }
 
+.gap-4 {
+  gap: var(--space-4);
+}
+
 .gap-8 {
   gap: var(--space-8);
 }
@@ -237,6 +241,10 @@ a {
 
 .text-balance {
   text-wrap: balance;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-60ch {
@@ -297,6 +305,14 @@ a {
   align-items: flex-start;
 }
 
+.flex-start {
+  justify-content: flex-start;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
 .flex-grow-1 {
   flex-grow: 1;
 }
@@ -337,7 +353,6 @@ a {
 .btn,
 button {
   font-family: Karla, sans-serif;
-  color: var(--black);
   font-size: var(--text-18);
   font-style: normal;
   font-weight: 700;
@@ -356,6 +371,7 @@ button {
   align-items: center;
   gap: 20px;
   box-sizing: border-box;
+  text-wrap: nowrap;
 }
 
 .order-btn {
@@ -363,7 +379,7 @@ button {
   font-weight: 700;
 
   display: flex;
-/*   height: 40px; */
+  /*   height: 40px; */
   width: auto;
 
   justify-content: flex-start;
@@ -439,11 +455,11 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch
+  align-items: stretch;
 }
 
 .card {
-  width: 30%;
+  width: 100%;
   background-color: var(--light-grey);
   border-radius: var(--rounded-16);
   box-sizing: border-box;
@@ -478,7 +494,7 @@ nav {
 }
 
 .card-group.col-full {
-  grid-column: 3 / span 8;
+  grid-column: 4 / span 6;
 }
 
 /* Testimonials section */
@@ -486,6 +502,29 @@ nav {
 #testimonials-section {
   height: auto;
   background-color: var(--dark-green);
+  color: var(--white);
+}
+
+.testimonial_card {
+  width: 25%;
+  background-color: var(--light-grey);
+  color: #333;
+  border-radius: var(--rounded-16);
+  padding: var(--space-20) var(--space-20) var(--space-40);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.rate-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.avatar {
+  width: var(--space-56);
+  height: var(--space-56);
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 /* About section */
@@ -546,6 +585,12 @@ label {
   margin: 0;
 }
 
+@media screen and (max-width: 1920px) {
+  .card-group.col-full {
+    grid-column: 3 / span 8;
+  }
+}
+
 @media screen and (max-width: 1520px) {
   :root {
     font-size: 15px;
@@ -565,6 +610,10 @@ label {
 
   .booking_form {
     grid-column: 5 / span 4;
+  }
+
+  .card-group.col-full {
+    grid-column: 2 / span 10;
   }
 }
 
@@ -625,17 +674,20 @@ label {
     grid-column: 3 / span 8;
   }
 
-  .card-group {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .card {
-    width: 100%;
-  }
-
   .card-group.col-full {
-    grid-column: 4 / span 6;
+    grid-column: 1 / span 12;
+  }
+
+  .card-group {
+    gap: var(--space-20);
+  }
+
+  .testimonial_card {
+    width: 100%;
+  }
+
+  #specials-section button {
+    padding: var(--text-14) var(--text-40) var(--text-16);
   }
 }
 
@@ -651,6 +703,23 @@ label {
 
   .nav_logo {
     max-height: var(--space-48);
+  }
+
+  .card-group {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card-group.col-full {
+    grid-column: 2 / span 10;
+  }
+
+  #specials-section>div {
+    gap: var(--space-20);
   }
 
   .booking_form {

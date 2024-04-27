@@ -32,6 +32,8 @@
   --space-140: 8.75rem;
   --space-160: 10rem;
   --space-200: 12.5rem;
+  --space-240: 15rem;
+  --space-280: 17.5rem;
 
   --text-12: 0.75rem;
   --text-14: 0.875rem;
@@ -119,7 +121,7 @@ h1,
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1.0;
   margin: 0;
 }
 
@@ -130,7 +132,7 @@ h2,
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.0;
   margin: 0;
 }
 
@@ -141,7 +143,7 @@ h3,
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1.0;
   margin: 0;
 }
 
@@ -169,8 +171,12 @@ a {
   padding-right: 0;
 }
 
-.pt-20 {
-  padding-top: var(--space-20);
+.pt-8 {
+  padding-top: var(--space-8);
+}
+
+.pt-12 {
+  padding-top: var(--space-12);
 }
 
 .pt-40 {
@@ -195,6 +201,14 @@ a {
 
 .pt-200 {
   padding-top: var(--space-200);
+}
+
+.pb-8 {
+  padding-bottom: var(--space-8);
+}
+
+.pb-12 {
+  padding-bottom: var(--space-12);
 }
 
 .pb-20 {
@@ -249,7 +263,21 @@ a {
   gap: var(--space-60);
 }
 
+.gap-80 {
+  gap: var(--space-80);
+}
+
+.gap-100 {
+  gap: var(--space-100);
+}
+
 /* Text */
+
+.text-legal {
+  font-size: var(--text-14);
+  font-weight: 400;
+  line-height: 1.5;
+}
 
 .text-nowrap {
   text-wrap: nowrap;
@@ -327,6 +355,14 @@ a {
 
 .flex-end {
   justify-content: flex-end;
+}
+
+.flex-align-start {
+  align-items: flex-start;
+}
+
+.flex-align-end {
+  align-items: flex-end;
 }
 
 .flex-grow-1 {
@@ -564,9 +600,34 @@ nav {
   margin-left: -10rem;
   margin-top: -10rem;
 }
+
 .about_img>img {
   height: 100%;
   object-fit: cover;
+}
+
+/* Footer */
+
+.footer_img {
+  max-height: var(--space-240);
+  object-fit: cover;
+}
+
+.footer_list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+.footer_group {
+  width: var(--space-240)
+}
+.footer_group:nth-child(2) {
+  width: var(--space-160)
 }
 
 /* Booking page */
@@ -681,6 +742,20 @@ label {
   .card-group.col-full {
     grid-column: 2 / span 10;
   }
+
+  .footer_img {
+    max-height: var(--space-200);
+  }
+
+  .footer_group, 
+  .footer_group:nth-child(2) {
+    width: var(--space-120);
+  }
+
+  footer>div {
+    gap: var(--space-160) !important;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -724,6 +799,24 @@ label {
   #specials-section button {
     padding: var(--text-14) var(--text-40) var(--text-16);
   }
+
+  footer>div {
+    gap: var(--space-100) !important;
+  }
+
+  .footer_img {
+    max-height: var(--space-200);
+  }
+
+  .footer_group, 
+  .footer_group:nth-child(2) {
+    width: auto;
+    max-width: var(--space-200);
+  }
+
+  div:has(>.footer_group) {
+    gap: var(--space-60) !important;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -759,5 +852,23 @@ label {
 
   .booking_form {
     grid-column: 2 / span 10;
+  }
+
+  footer>div {
+    gap: var(--space-40) !important;
+  }
+
+  .footer_img {
+    max-height: var(--space-120);
+  }
+
+  .footer_group, 
+  .footer_group:nth-child(2) {
+    width: auto;
+    max-width: var(--space-100);
+  }
+
+  div:has(>.footer_group) {
+    gap: var(--space-20) !important;
   }
 }

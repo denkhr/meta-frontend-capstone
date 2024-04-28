@@ -156,6 +156,14 @@ a {
   line-height: normal;
 }
 
+a:hover {
+  color: var(--peach) !important;
+}
+
+a:active {
+  color: var(--dark-green) !important;
+}
+
 /* UTILITIES */
 
 /* Display */
@@ -179,6 +187,10 @@ a {
   padding-top: var(--space-12);
 }
 
+.pt-20 {
+  padding-top: var(--space-20);
+}
+
 .pt-40 {
   padding-top: var(--space-40);
 }
@@ -193,6 +205,10 @@ a {
 
 .pt-100 {
   padding-top: var(--space-100);
+}
+
+.pt-120 {
+  padding-top: var(--space-120);
 }
 
 .pt-160 {
@@ -229,6 +245,10 @@ a {
 
 .pb-100 {
   padding-bottom: var(--space-100);
+}
+
+.pb-120 {
+  padding-bottom: var(--space-120);
 }
 
 .pb-160 {
@@ -346,7 +366,7 @@ a {
 .v-flex {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .flex-start {
@@ -426,6 +446,34 @@ button {
   text-wrap: nowrap;
 }
 
+.btn:hover:not([disabled]),
+button:hover:not([disabled]) {
+  background-color: var(--peach);
+  color: var(--white);
+}
+
+.btn:active:not([disabled]),
+button:active:not([disabled]) {
+  color: var(--black);
+}
+
+.btn.bg-black:hover:not([disabled]),
+button.bg-black:hover:not([disabled]) {
+  background-color: var(--white) !important;
+  color: var(--peach) !important;
+}
+
+.btn.bg-black:active:not([disabled]),
+button.bg-black:active:not([disabled]) {
+  color: var(--black) !important;
+}
+
+.btn:disabled,
+button:disabled {
+  background-color: var(--disabled-bg) !important;
+  color: var(--disabled-text) !important;
+}
+
 .order-btn {
   font-size: var(--text-16);
   font-weight: 700;
@@ -437,6 +485,10 @@ button {
   justify-content: flex-start;
   align-items: center;
   margin-top: auto;
+}
+
+.order-btn:hover {
+  color: var(--peach);
 }
 
 
@@ -485,7 +537,7 @@ nav {
 .hero_img {
   width: 25rem;
   height: 25rem;
-  margin-bottom: -8rem;
+  margin-bottom: -10rem;
   border-radius: var(--rounded-16);
   overflow: hidden;
 }
@@ -672,6 +724,13 @@ textarea {
   box-sizing: border-box;
 }
 
+input:hover,
+select:hover,
+textarea:hover {
+background-color: var(--light-peach);
+/* color: var(--white); */
+}
+
 label {
   font-family: Karla, sans-serif;
   font-size: var(--text-16);
@@ -679,6 +738,10 @@ label {
   line-height: normal;
   padding: 0;
   margin: 0;
+}
+
+.error {
+  color: rgb(173, 30, 30);
 }
 
 @media screen and (max-width: 1920px) {

@@ -16,18 +16,18 @@ import { useLocation } from "react-router-dom";
 
 const CallToAction = () => {
   return (
-    <section id="hero-section" className="grid-main paddings-section pt-60 pb-80">
+    <section id="hero-section" className="grid-main paddings-section pt-80 pb-100">
       <div className="h-flex gap-40 col-full">
 
-        <div className="v-flex gap-20 hero_text">
+        <div className="v-flex flex-align-start gap-20 hero_text">
 
-          <div className="v-flex">
+          <div className="v-flex flex-align-start">
             <h1 className="color-yellow">Little Lemon</h1>
             <h2 className="pb-20">Chicago</h2>
             <p className="text-60ch pb-20 text-balance">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
           </div>
 
-          <a href="/book" className="btn" role="Button" aria-label="button">Reserve a table</a>
+          <a href="/booking" className="btn" role="Button" aria-label="button">Reserve a table</a>
 
         </div>
 
@@ -219,12 +219,12 @@ const CustomersSay = () => {
 
 const Chicago = () => {
   return (
-    <section id="about-section" className="grid-main paddings-section pt-160 pb-100">
+    <section id="about-section" className="grid-main paddings-section pt-160 pb-120">
       <div className="h-flex gap-40 col-full">
 
-        <div className="v-flex gap-20 hero_text">
+        <div className="v-flex flex-align-start gap-20 hero_text">
 
-          <div className="v-flex">
+          <div className="v-flex flex-align-start">
             <h2 className="text-h1 color-black">Little Lemon</h2>
             <h3 className="text-h2 pb-20 color-dark-green">Chicago</h3>
             <p className="text-60ch pb-20 text-balance">Welcome to our Little Lemon restaurant! You are always welcome here. We have a variety of dishes to choose from and we have a welcoming and friendly atmosphere. Our new restaurant has been opened in 2024 in Chicago. Best service and food for you to enjoy. And even more good things. Let us delve you into an atmosphere of deliciousness. </p>

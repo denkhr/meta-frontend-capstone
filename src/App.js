@@ -25,12 +25,12 @@ const Header = () => {
 
 const Footer = () => {
   return (
-    <footer className="grid-main paddings-section pt-40 pb-40">
+    <footer className="grid-main paddings-section pt-100 pb-100">
       <div className="h-flex flex-align-start gap-100 col-full">
 
         <img className="footer_img" src={lemonImage} alt="Little Lemon illustration"></img>
 
-        <div className="v-flex flex-grow-2">
+        <div className="v-flex flex-align-start flex-grow-2">
 
           <div className="h-flex gap-80 flex-align-start">
 

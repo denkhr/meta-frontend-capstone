@@ -133,7 +133,7 @@ export const BookingPage = ({
           {formErrors.phone && <span className="error" aria-live="assertive">{formErrors.phone}</span>}
         </label>
 
-        <div className="h-flex gap-20">
+        <div className="h-flex flex-align-start gap-20">
           <label htmlFor="res-date" className="flex-grow-1">
             Choose date
             <input
@@ -169,7 +169,7 @@ export const BookingPage = ({
           </label>
         </div>
 
-        <div className="h-flex gap-20">
+        <div className="h-flex flex-align-start gap-20">
         <label htmlFor="guests" className="flex-grow-1">
           Number of guests
           <input
